@@ -1,0 +1,43 @@
+<section class="bg-main-light shadow show p-5 my-3 rounded">
+  <h1 class="h2 text-main mb-4">Login Now:</h1>
+
+  <div>
+    <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+      <div class="my-2">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+      <div class="my-2">
+        <label for="password">password:</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+        />
+        <a routerLink="/forget" class="text-main">Forget Password?</a>
+      </div>
+      @if (errorMessage) {
+      <p class="alert alert-danger">{{ errorMessage }}</p>
+      } @if (msgSuccess) {
+      <p class="alert alert-success">Login Success</p>
+      }
+      <button
+        [disabled]="loginForm.invalid || isLoading"
+        type="submit"
+        class="btn btn-main d-block mt-4 ms-auto"
+      >
+        Login @if(isLoading) {
+        <span><i class="fas fa-spin fa-spinner"></i></span>
+        }
+      </button>
+    </form>
+  </div>
+</section>

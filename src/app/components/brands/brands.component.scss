@@ -1,0 +1,52 @@
+.brand{
+    transition: all 0.3s;
+}
+
+.brand:hover{
+    box-shadow: 0 0 10px #11bd1168;
+
+}
+.layer{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+.brandClick{
+    z-index: 9999;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 450px;
+    padding-bottom: 20px;
+}
+
+.brandClick button{
+    left: 100%;
+    transform: translate(-110%);
+    top: 15px;
+}
+.brandClick i{
+    top: 20px;
+    left: 100%;
+    transform: translate(-170%);
+}
+.top{
+    width: 450px;
+    height: 0.1px;
+    background-color: rgb(222, 222, 222);
+    position: absolute;
+    top: 50px;
+}
+.bottom{
+    width: 450px;
+    height: 0.1px;
+    background-color: rgb(222, 222, 222);
+    position: absolute;
+    bottom: 50px;
+}

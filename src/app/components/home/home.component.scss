@@ -1,0 +1,28 @@
+h5 {
+  text-overflow: ellipsis;
+}
+
+.product {
+  cursor: pointer;
+}
+.product .btn-main {
+  transform: translateY(160%);
+  transition: transform 0.7s;
+}
+
+.product:hover .btn-main {
+  transform: translateY(0);
+}
+.addRemove {
+  background-color: var(--main-color);
+}
+
+.addRemove button {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.wishListDiv {
+  font-size: 20px;
+}

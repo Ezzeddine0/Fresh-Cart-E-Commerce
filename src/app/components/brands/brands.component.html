@@ -1,0 +1,39 @@
+<section class="container">
+  <h1 class="text-main text-center my-4">All Brands</h1>
+  <div class="row g-4">
+    @for (brand of listBrands; track brand._id) {
+    <div class="col-md-3 my-4">
+      <div
+        (click)="getSpecBrand(brand._id)"
+        class="border rounded-3 brand cursor-pointer"
+      >
+        <img [src]="brand.image" class="w-100" [alt]="brand.name" />
+        <p class="text-center">{{ brand.name }}</p>
+      </div>
+    </div>
+    }
+  </div>
+
+  @if (barndspec) {
+  <div class="layer">
+    <div class="brandClick bg-white rounded-3 position-relative">
+        <div class="top"></div>
+      <i (click)="hide()" class="fa-solid fa-x fa-xl text-secondary position-relative cursor-pointer"></i>
+      <div class="d-flex justify-content-around align-items-center">
+        <div class="text-center ">
+          <h3 class="text-main">{{ specBrand.data.name }}</h3>
+          <span class="small">{{ specBrand.data.name }}</span>
+        </div>
+
+        <img
+          [src]="specBrand.data.image"
+          class="w-50 img-fluid"
+          [alt]="specBrand.data.name"
+        />
+    </div>
+    <div class="bottom"></div>
+    <button (click)="hide()" class="btn btn-secondary position-relative">Close</button>
+    </div>
+  </div>
+  }
+</section>

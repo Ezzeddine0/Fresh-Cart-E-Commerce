@@ -1,0 +1,14 @@
+.removeBtn {
+  background-color: transparent;
+  border: none;
+}
+
+.removeBtn i {
+  color: var(--main-color);
+}
+.plusMinusBtn {
+  background: transparent;
+  border-color: var(--main-color);
+  padding: 2px 7px;
+  border-radius: 5px;
+}

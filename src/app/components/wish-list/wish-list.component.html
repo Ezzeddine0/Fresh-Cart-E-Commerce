@@ -1,0 +1,23 @@
+<section class="container bg-body-tertiary">
+    <h1 class="h3 my-4">My Wish List</h1>
+    @for (item of listWishes; track item._id) {
+        <div class="row border-bottom my-4">
+            <div class="col-md-1">
+                <img [src]="item.imageCover" class="w-100" [alt]="item.slug">
+            </div>
+            <div class="col-md-11 d-flex justify-content-between">
+                <div>
+                    <h5>{{item.description}}</h5>
+                    <p>{{item.price}}</p>
+                    <div (click)="removeWishList(item.id)" class="cursor-pointer text-danger">
+                        <i class="fa-solid fa-trash"></i>
+                        <span class="ms-2">Remove</span>
+                    </div>
+                </div>
+                <div>
+                    <button (click)="addCart(item._id)" class="btn-main">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    }
+</section>

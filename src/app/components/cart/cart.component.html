@@ -1,0 +1,68 @@
+<section class="border container bg-main-light p-4">
+  @if (cart._id!=null) {
+  <h3 class="h3">Shop Cart:</h3>
+  <div class="d-flex justify-content-between">
+    <p class="text-main h6 mb-4">Total Cart Price: {{ cart.totalCartPrice }}</p>
+    <button (click)="deleteCart()" class="btn btn-outline-danger">
+      Clear Cart @if (isloading) {<i class="fas fa-spin fa-spinner"></i>}
+    </button>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center">
+    @for (product of cart.products; track product.product.id) {
+    <div class="col-md-10">
+      <div>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-md-2">
+            <img
+              class="w-100"
+              [src]="product.product.imageCover"
+              [alt]="product.product.title | termtext : 2"
+            />
+          </div>
+          <div class="col-md-10">
+            <p>{{ product.product.title }}</p>
+            <p class="text-main me-3">Price: {{ product.price }}</p>
+            <button
+              (click)="removeItemFromCart(product.product.id)"
+              [disabled]="isloading"
+              class="removeBtn"
+            >
+              <i class="fa-solid fa-trash"></i>
+              <span> remove</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="d-flex align-items-center justify-content-center mb-sm-2">
+        <button
+          [disabled]="isloading"
+          (click)="updateCartQuantity(product.product.id, product.count + 1)"
+          class="plusMinusBtn"
+        >
+          +
+        </button>
+        <span class="mx-2">{{ product.count }}</span>
+        <button
+          [disabled]="isloading"
+          (click)="updateCartQuantity(product.product.id, product.count - 1)"
+          class="plusMinusBtn"
+        >
+          -
+        </button>
+      </div>
+    </div>
+    <hr />
+    }
+  </div>
+  <button
+    [routerLink]="['/orders', cart._id]"
+    class="btn-main d-block ms-auto mx-sm-auto"
+  >
+    Check Out
+  </button>
+  } @else {
+  <p class="text-center h4 text-main">There is no item in the Cart.</p>
+  }
+</section>

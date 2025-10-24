@@ -1,0 +1,134 @@
+<section class="bg-main-light shadow show p-5 my-3 rounded">
+  <h1 class="h2 text-main mb-4">Register Now:</h1>
+
+  <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+    <div class="my-2">
+      <label for="name">name:</label>
+      <input
+        id="name"
+        class="form-control"
+        name="name"
+        type="text"
+        formControlName="name"
+        [ngClass]="{
+          'is-valid':
+            !registerForm.get('name')?.errors &&
+            (registerForm.get('name')?.touched ||
+              registerForm.get('name')?.dirty),
+          'is-invalid':
+            registerForm.get('name')?.errors &&
+            (registerForm.get('name')?.touched ||
+              registerForm.get('name')?.dirty)
+        }"
+      />
+      @if (registerForm.get("name")?.errors &&
+      (registerForm.get("name")?.touched ||registerForm.get("name")?.dirty ) ) {
+      <div class="alert alert-danger">
+        @if (registerForm.get("name")?.getError("required")) {
+        <p>Name is required</p>
+
+        }@else if (registerForm.get("name")?.getError("minlength")) {
+        <p>Name should be more than 3 Characters</p>
+
+        }@else if (registerForm.get("name")?.getError("maxlength")) {
+        <p>Name should be less than 12 Characters</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="my-2">
+      <label for="email">email:</label>
+      <input
+        id="email"
+        class="form-control"
+        name="email"
+        type="email"
+        formControlName="email"
+      />
+      @if (registerForm.get("email")?.errors &&
+      registerForm.get("email")?.touched ) {
+      <div class="alert alert-danger">
+        @if (registerForm.get("email")?.getError("required")) {
+        <p>Email is required</p>
+
+        }@else if (registerForm.get("email")?.getError("email")) {
+        <p>Email must end with &#64;ex.com</p>
+        }
+      </div>
+      }
+    </div>
+    <div class="my-2">
+      <label for="password">password:</label>
+      <input
+        id="password"
+        class="form-control"
+        name="password"
+        type="password"
+        formControlName="password"
+      />
+      @if (registerForm.get("password")?.errors &&
+      registerForm.get("password")?.touched ) {
+      <div class="alert alert-danger">
+        @if (registerForm.get("password")?.getError("required")) {
+        <p>Password is required</p>
+
+        }@else if (registerForm.get("password")?.getError("pattern")) {
+        <p>Invalid Password</p>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="my-2">
+      <label for="rePassword">rePassword:</label>
+      <input
+        id="rePassword"
+        class="form-control"
+        name="rePassword"
+        type="password"
+        formControlName="rePassword"
+      />
+      @if (registerForm.getError("mismatch")&&
+      registerForm.get("rePassword")?.touched) {
+      <div class="alert alert-danger">
+        <p>Password is not matched!</p>
+      </div>
+      }
+    </div>
+    <div class="my-2">
+      <label for="phone">phone:</label>
+      <input
+        id="phone"
+        class="form-control"
+        name="phone"
+        type="text"
+        formControlName="phone"
+      />
+      @if (registerForm.get("phone")?.errors &&
+      registerForm.get("phone")?.touched ) {
+      <div class="alert alert-danger">
+        @if (registerForm.get("phone")?.getError("required")) {
+        <p>phone is required</p>
+
+        }@else if (registerForm.get("phone")?.getError("pattern")) {
+        <p>Invalid phone number</p>
+        }
+      </div>
+      }
+    </div>
+    <button
+      [disabled]="registerForm.invalid || isLoading"
+      type="submit"
+      class="btn btn-main d-block mt-4 ms-auto"
+    >
+      Register @if(isLoading) {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+      }
+    </button>
+    @if (errorMessage!="") {
+    <p class="alert alert-danger mt-3">{{ errorMessage }}</p>
+    } @if (successMessage) {
+    <p class="alert alert-success mt-3">success</p>
+    }
+  </form>
+</section>

@@ -1,0 +1,42 @@
+<section class="bg-main-light shadow show p-5 my-3 rounded container">
+  <H3 class="h3 text-main mb-3">Check Out</H3>
+
+  <form [formGroup]="checkOutForm" (ngSubmit)="checkOut()">
+    <div class="my-2">
+      <label for="details">Details:</label>
+      <textarea
+        type="text"
+        id="details"
+        name="details"
+        class="form-control"
+        formControlName="details"
+      >
+      </textarea>
+    </div>
+    <div class="my-2">
+      <label for="phone">Phone:</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        class="form-control"
+        formControlName="phone"
+      />
+    </div>
+    <div class="my-2">
+      <label for="city">City:</label>
+      <input
+        type="text"
+        id="city"
+        name="city"
+        class="form-control"
+        formControlName="city"
+      />
+    </div>
+    <button type="submit" class="btn-main d-block ms-auto mt-3">
+      Check-Out @if (isloading) {
+      <i class="fas fa-spin fa-spinner"></i>
+      }
+    </button>
+  </form>
+</section>

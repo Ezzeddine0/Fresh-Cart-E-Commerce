@@ -1,0 +1,16 @@
+<section class="my-3">
+    <div class="container">
+      <h1 class="text-main text-center my-4">All Categories</h1>
+      <div class="row g-5">
+          @for (cat of listCaregories; track cat._id) {
+            <div class="col-md-4 cursor-pointer">
+                <div (click)="getCategory()" class="border rounded-3 cat">
+                    <img [src]="cat.image" height="400px" class = 'w-100' [alt]="cat.name">
+                    <h3 class="text-center text-main">{{cat.name}}</h3>
+                  </div>
+            </div>
+          }
+
+      </div>
+    </div>  
+  </section>
