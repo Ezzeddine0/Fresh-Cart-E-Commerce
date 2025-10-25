@@ -7,15 +7,15 @@ import { environment } from '../../env/environments';
   providedIn: 'root',
 })
 export class OrdersService {
-  _HttpClient = inject(HttpClient);
-  url = window.location.origin;
+  private readonly _HttpClient = inject(HttpClient);
+  private readonly baseRedirectUrl = `${window.location.origin}/Fresh-Cart-E-Commerce`;
+
   constructor() {}
 
   checkOut(cartId: string, data: object): Observable<any> {
     return this._HttpClient.post(
-      `${environment.baseUrl}/api/v1/orders/checkout-session/${cartId}?url=${this.url}`,
+      `${environment.baseUrl}/api/v1/orders/checkout-session/${cartId}?url=${this.baseRedirectUrl}`,
       { shippingAddress: data }
     );
   }
 }
-// .

@@ -47,7 +47,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
         next: (res) => {
           console.log(res);
 
-          window.open(res.session.url, '/Fresh-Cart-E-Commerce', '_self');
+          window.open(res.session.url, '_self');
         },
         error: (err) => {
           this.isloading = false;
