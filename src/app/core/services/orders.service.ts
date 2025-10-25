@@ -8,13 +8,14 @@ import { environment } from '../../env/environments';
 })
 export class OrdersService {
   _HttpClient = inject(HttpClient);
-
+  url = window.location.origin;
   constructor() {}
 
   checkOut(cartId: string, data: object): Observable<any> {
     return this._HttpClient.post(
-      `${environment.baseUrl}/api/v1/orders/checkout-session/${cartId}?url=${environment.urlServer}`,
+      `${environment.baseUrl}/api/v1/orders/checkout-session/${cartId}?url=${this.url}`,
       { shippingAddress: data }
     );
   }
 }
+// .
